@@ -9,7 +9,7 @@ class ListsController < ApplicationController
 
   def index
     list = List.last
-    render json: {test: "hey" }, status: 201
+    return render json: {test: "hey" }, status: 201
   end
 
 
