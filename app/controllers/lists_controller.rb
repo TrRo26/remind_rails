@@ -1,15 +1,14 @@
 class ListsController < ApplicationController
 
   def show
-    @list = List.find(params[:id])
-    if request.xhr?
-      render json: {list: @list.name, items: @list.items }, status: 201
-    end
+    list = List.find(params[:id])
+    render json: {list: list.name, items: list.items }, status: 201
   end
 
   def index
-    list = List.last
-    return render json: {test: "hey" }, status: 201
+    lists = List.all
+    name_list = lists.map { |list| list.name  }
+    render json: {lists: name_list}, status: 201
   end
 
 
