@@ -8,10 +8,8 @@ class ListsController < ApplicationController
   end
 
   def index
-    if request.xhr?
-      list = List.last
-      render json: {test: "hey" }, status: 201
-    end
+    list = List.last
+    return render json: {test: "hey" }, status: 201
   end
 
 
