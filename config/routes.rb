@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
-  resources :lists, only: [:index, :show, :create, :update, :destroy] do
-    resources :items, only: [:index, :show, :create, :update, :destroy]
-  end
+  resources :lists, only: [:index, :show, :create, :update, :destroy]
+  resources :items, only: [:index, :show, :create, :update, :destroy]
+
 
   resources :maps, only: [:create]
 
