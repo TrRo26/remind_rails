@@ -32,7 +32,7 @@ class MapsController < ApplicationController
       if result["status"] == "OK"
         result["results"].each do |details|
           has_key = false
-          detail_hash = { details["name"] => {  address: details["vicinity"], keywords: [result["keyword"]], location: details["geometry"]["location"]} } }
+          detail_hash = { details["name"] => {  address: details["vicinity"], keywords: [result["keyword"]], location: details["geometry"]["location"] } }
 
 
           location_info.each do |hash|
