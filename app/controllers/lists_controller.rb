@@ -8,7 +8,7 @@ class ListsController < ApplicationController
   def index
     lists = List.all
     name_list = lists.map { |list| {name: list.name} }
-    render json: {lists: {name_list}}, status: 201
+    render json: {lists: {name: name_list}}, status: 201
   end
 
   def create
