@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :create, :update, :destroy]
 
 
-  resources :maps, only: [:create]
+  resources :maps, only: [:index]
 
 
 
