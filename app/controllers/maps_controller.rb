@@ -5,8 +5,7 @@ class MapsController < ApplicationController
     # example params
     # params[:location][:latitude] = "41.8762"
     # params[:location][:longitude] = "-87.6531"
-    # params[:location][:keywords] = "grocery store,food"
-    # params[:location][:keywords] = "food"
+    # params[:location][:keywords] = "pizza,food"
 
     if params[:location][:latitude] && params[:location][:longitude] && params[:location][:keywords]
       latitude = params[:location][:latitude]
@@ -33,8 +32,8 @@ class MapsController < ApplicationController
       if result["status"] == "OK"
         result["results"].each do |details|
           has_key = false
-          detail_hash = { details["name"] => {  address: details["vicinity"], keywords: [result["keyword"]] } }
-          # location: details["geometry"]["location"]}
+          detail_hash = { details["name"] => {  address: details["vicinity"], keywords: [result["keyword"]], location: details["geometry"]["location"]} } }
+
 
           location_info.each do |hash|
             if hash.has_key?(details["name"])
@@ -51,25 +50,7 @@ class MapsController < ApplicationController
 
     end
 
-    location_info.each do |location|
-      location[0]
-
-    end
     render json: location_info
   end
 
 end
-
-
-          # length = location_info.length
-          # counter = 0
-          # while length > counter
-          #   if location_info[counter]["address"] && location_info[counter]["address"] == details["address"]
-          #     element["place"][:keywords] << result["keywords"][0]
-          #   else
-
-          #     if
-          #     location_info << detail_hash
-          #   end
-          #   counter += 1
-          # end
