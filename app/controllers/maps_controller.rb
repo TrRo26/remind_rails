@@ -1,6 +1,8 @@
 class MapsController < ApplicationController
 
   def index
+
+
     # example params
     # params[:location][:latitude] = "41.8762"
     # params[:location][:longitude] = "-87.6531"
