@@ -6,11 +6,12 @@ class MapsController < ApplicationController
     # params[:location][:latitude] = "41.8762"
     # params[:location][:longitude] = "-87.6531"
     # params[:location][:keywords] = "pizza,food"
-
-    if params[:location][:latitude] && params[:location][:longitude] && params[:location][:keywords]
+    items = Item.all.map {|item| item.name }
+    p items
+    if params[:location][:latitude] && params[:location][:longitude]
       latitude = params[:location][:latitude]
       longitude = params[:location][:longitude]
-      keywords = params[:location][:keywords].split(",")
+      # keywords = params[:location][:keywords].split(",")
     else
       return render json: { error: "bad request"  }
     end
@@ -18,12 +19,12 @@ class MapsController < ApplicationController
 
     locations = []
 
-    keywords.each do |keyword|
+    items.each do |keyword|
       json_parse = JSON.parse(open("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{latitude},#{longitude}&keyword=#{keyword}&radius=300&key=#{ENV["GOOGLE_MAPS"]}").read)
 
       json_parse["keyword"] = keyword
       locations << json_parse
-
+      p locations
     end
     location_info = []
 
