@@ -1,16 +1,16 @@
 class MapsController < ApplicationController
 
   def index
-
     # example params
     # params[:location][:latitude] = "41.8762"
     # params[:location][:longitude] = "-87.6531"
     # params[:location][:keywords] = "pizza,food"
 
-    if params[:location][:latitude] && params[:location][:longitude] && params[:location][:keywords]
+    if params[:location][:latitude] && params[:location][:longitude]
       latitude = params[:location][:latitude]
       longitude = params[:location][:longitude]
-      keywords = params[:location][:keywords].split(",")
+      keywords = Item.all.map { |list| list.name }
+      # keywords = params[:location][:keywords].split(",")
     else
       return render json: { error: "bad request"  }
     end
@@ -50,7 +50,7 @@ class MapsController < ApplicationController
 
     end
 
-    render json: location_info
+    render json: { "locations": location_info }
   end
 
 end
