@@ -3,6 +3,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
     create_table :items do |t|
       t.string :name, null: false
       t.integer :list_id, null: false
+      t.string :keyword
 
       t.timestamps
     end
