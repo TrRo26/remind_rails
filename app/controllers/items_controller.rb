@@ -9,11 +9,7 @@ class ItemsController < ApplicationController
     items = Item.all
     items_content = []
     items.each do |item|
-      item_hash = {
-        name: item.name,
-        list_id: item.list_id
-      }
-      items_content << item_hash
+      items_content << item.name
     end
     render json: { items: items_content }, status: 201
   end
