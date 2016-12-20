@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
+    item = Item.find_by(name: params[:item][:name])
     if item.destroy
       render json: { message: "item Deleted"}
     else
