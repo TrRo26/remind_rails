@@ -10,25 +10,28 @@ class Item < ApplicationRecord
     keywords = Keyword.all
     keywords.each do |keyword|
       if keyword.item.downcase == self.name.downcase
-        self.keyword = keyword.name
+        return self.keyword = keyword.name
         break
       end
     end
 
     if self.keyword == nil
+     video_games = JSON.parse(open("https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=name&search=#{self.name}",
+      "X-Mashape-Key" => "#{ENV["VIDEO_GAMES"]}").read)
+
+      if video_games[0] != nil
+        video_games.each do |game|
+          if game["name"].match(self.name) && game["name"].match(self.name)[0].downcase == self.name.downcase
+
+            return self.keyword = "Video Game"
+          end
+        end
+      end
+    end
+    if self.keyword == nil
       self.keyword = self.name
     end
   end
 
-#   def video_game_search
-#    video_games = JSON.parse(open("https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=name&limit=10&offset=0&order=release_dates.date%3Adesc&search=#{self.name}",
-#     "X-Mashape-Key" => "#{ENV["VIDEO_GAMES"]}").read)
-#     if video_games[0] != nil
-#       if video_games[0]["name"].include?(self.name)
-#         self.keyword = "Video Game"
-#       end
-#     elsif self.keyword == nil
-#       self.keyword = self.name
-#     end
-#   end
+
 end
