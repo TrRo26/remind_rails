@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :maps, only: [:index]
 
+  post 'authenticate', to: 'authentication#authenticate'
+
 
 
   # namespace :api do

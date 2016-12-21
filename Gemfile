@@ -27,6 +27,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+#jason with token gem
+gem 'jwt'
+
+#helper method for controller and models
+gem 'simple_command'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
