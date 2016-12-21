@@ -2,11 +2,11 @@ class Item < ApplicationRecord
   belongs_to :list
   has_one :user, {through: :list}
 
-  before_create :grocery_search
+  before_create :keyword_association
 
   private
 
-  def grocery_search
+  def keyword_association
     keywords = Keyword.all
     keywords.each do |keyword|
       if keyword.item.downcase == self.name.downcase
