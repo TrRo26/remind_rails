@@ -32,13 +32,21 @@ class MapsController < ApplicationController
     locations.each do |result|
       if result["status"] == "OK"
         result["results"].each do |details|
+
+          p "==============================="
+          p details
+          p "==============================="x
           has_key = false
+
           detail_hash = { details["name"] => {  address: details["vicinity"], items: [result["item"]], location: details["geometry"]["location"] } }
 
           location_info.each do |hash|
+            p hash
             if hash.has_key?(details["name"])
               has_key = true
-              hash[details["name"]][:items] << result["item"]
+              if !hash[details["name"]][:items].include?(result["item"])
+                hash[details["name"]][:items] << result["item"]
+              end
             end
           end
 
@@ -54,3 +62,11 @@ class MapsController < ApplicationController
   end
 
 end
+
+
+# hash[details["name"]][:items].each do |item|
+#   if item.downcase != result["item"].downcase
+#     hash[details["name"]][:items] << result["item"]
+#     break
+#   end
+# end
