@@ -62,11 +62,3 @@ class MapsController < ApplicationController
   end
 
 end
-
-
-# hash[details["name"]][:items].each do |item|
-#   if item.downcase != result["item"].downcase
-#     hash[details["name"]][:items] << result["item"]
-#     break
-#   end
-# end
