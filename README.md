@@ -10,10 +10,10 @@ remind is an application that allows users to create and store lists of items th
 
 ## Authors
 
-**Collin Rea**
-**Vince Roti**
-**Travis Roy**
-**Andrew Van Beek**
+* **Collin Rea**
+* **Vince Roti**
+* **Travis Roy**
+* **Andrew Van Beek**
 
 See also the list of [contributors](https://github.com/TrRo26/remind/settings/collaboration) who participated in this project.
 
